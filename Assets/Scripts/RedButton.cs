@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RedButton : MonoBehaviour {
+public class RedButton : MonoBehaviour
+{
 
     public void ChangeScene(string sceneName)
     {
@@ -12,7 +13,7 @@ public class RedButton : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             ChangeScene("WhiteRoomScene");
         }
