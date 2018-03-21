@@ -1,16 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DoorManager : MonoBehaviour
 {
     [SerializeField] private float doorSpeed = 100f;
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -28,5 +23,7 @@ public class DoorManager : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, target, step);
             yield return new WaitForSeconds(0.01f);
         }
+        ScreenFader screenFader = GameObject.FindObjectOfType<ScreenFader>();
+        screenFader.EndScene();
     }
 }
