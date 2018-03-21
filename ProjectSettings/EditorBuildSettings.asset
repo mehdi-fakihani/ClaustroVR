@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TutoScene.unity
+    guid: 69febd4c7171bc54aa161ef8a5d8612a
+  - enabled: 1
+    path: Assets/Scenes/WhiteRoomScene.unity
+    guid: cdb025f93bffb23429eaf3cf8162304e

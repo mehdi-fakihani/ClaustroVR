@@ -20,8 +20,6 @@ public class CameraManager : MonoBehaviour {
         float v = Input.GetAxisRaw("CameraVertical");
 
         // Move the player around the scene.
-        Debug.Log(v);
-        Debug.Log(h);
         Move(h, v);
     }
 

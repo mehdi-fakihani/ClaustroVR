@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class RedButton : MonoBehaviour
 {
+    private bool playerButton = false;
 
     public void ChangeScene(string sceneName)
     {
@@ -15,7 +16,15 @@ public class RedButton : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            playerButton = true;
             ChangeScene("WhiteRoomScene");
         }
     }
+
+    public bool GetPlayerButton()
+    {
+        return playerButton;
+    }
+
+    
 }
