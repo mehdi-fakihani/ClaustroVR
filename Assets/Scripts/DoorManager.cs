@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class DoorManager : MonoBehaviour
 {
-
-    private static float doorAngularSpeed = 10;
+    [SerializeField] private float doorSpeed = 100f;
 
     // Use this for initialization
     void Start()
@@ -22,7 +21,7 @@ public class DoorManager : MonoBehaviour
 
     IEnumerator openDoor()
     {
-        float step = doorAngularSpeed * Time.deltaTime;
+        float step = doorSpeed * Time.deltaTime;
         Quaternion target = Quaternion.Euler(0, 90, 0);
         while (transform.rotation != target)
         {
