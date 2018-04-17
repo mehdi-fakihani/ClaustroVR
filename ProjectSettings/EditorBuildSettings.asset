@@ -5,9 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TutoScene.unity
     guid: 69febd4c7171bc54aa161ef8a5d8612a
   - enabled: 1
     path: Assets/Scenes/WhiteRoomScene.unity
     guid: cdb025f93bffb23429eaf3cf8162304e
+  - enabled: 1
+    path: Assets/Scenes/PrisonScene.unity
+    guid: d5704c234564299439e15b4ce6015739
+  - enabled: 1
+    path: Assets/Scenes/TutoSceneVideo.unity
+    guid: 0cff5b007699dcf4cb00778d9466fbea

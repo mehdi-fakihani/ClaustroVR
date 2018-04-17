@@ -3,28 +3,54 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RedButton : MonoBehaviour
+namespace Valve.VR.InteractionSystem
 {
-    private bool playerButton = false;
+	public class RedButton : MonoBehaviour
+	{
+		public InputTest input;
+		private bool playerButtonCollision = false;
 
-    public void ChangeScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
-    }
+	
+		void Update ()
+		{
+			if (playerButtonCollision && input.HairTriggerUp())
+			{
+				ChangeScene("WhiteRoomScene");
+			}
+		}
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player")
+	    public void ChangeScene(string sceneName)
+	    {
+	        SceneManager.LoadScene(sceneName);
+	    }
+
+	    private void OnCollisionEnter(Collision collision)
+	    {
+			if (collision.gameObject.tag == "Player") 
+			{
+				playerButtonCollision = true;
+			}
+	
+	    }
+
+		private void OnCollisionExit(Collision collision)
+		{
+			if (collision.gameObject.tag == "Player") 
+			{
+				playerButtonCollision = false;
+			}
+		}  
+
+        public bool IsPressed()
         {
-            playerButton = true;
-            ChangeScene("WhiteRoomScene");
+            if (playerButtonCollision && input.HairTriggerUp())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
-    }
-
-    public bool GetPlayerButton()
-    {
-        return playerButton;
-    }
-
-    
+	}
 }
