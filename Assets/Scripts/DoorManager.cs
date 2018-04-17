@@ -53,6 +53,5 @@ public class DoorManager : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, target, step);
             yield return new WaitForSeconds(0.01f);
         }
-
     }
 }

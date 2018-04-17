@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SteamVrFadeTest : MonoBehaviour {
 
-	private float _fadeDuration = 5f;
+	private float _fadeDuration = 2f;
 
 	private void Start()
 	{
@@ -26,3 +26,4 @@ public class SteamVrFadeTest : MonoBehaviour {
 		SteamVR_Fade.Start(Color.clear, _fadeDuration);
 	}
 }
+
