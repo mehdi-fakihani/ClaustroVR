@@ -21,10 +21,10 @@ public class TutorialManager : MonoBehaviour {
         {
             move = true;
         }
-        if (buton.IsPressed())
+        /*if (buton.IsPressed())
         {
             button = true;
-        }
+        }*/
 		if (move && !button) {
 			tutoMove.SetActive (false);
 			tutoButton.SetActive (true);

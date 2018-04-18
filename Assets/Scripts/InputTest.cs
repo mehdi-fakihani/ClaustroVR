@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
+using UnityEngine.SceneManagement;
 
 namespace Valve.VR.InteractionSystem
 {
@@ -13,6 +14,7 @@ namespace Valve.VR.InteractionSystem
 		private Player player = null;
 		private  Valve.VR.EVRButtonId touchpad = Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad;
 		private Vector2 axis = Vector2.zero;
+		[SerializeField] private RedButton button;
 		
 
 
@@ -31,8 +33,12 @@ namespace Valve.VR.InteractionSystem
 				if (rig != null) 
 				{
 					rig.position += (transform.right * axis.x + transform.forward * axis.y) * Time.deltaTime;
-					rig.position = new Vector3 (rig.position.x, 0, rig.position.z);
+					rig.position = new Vector3 (rig.position.x, 1f, rig.position.z);
 				}
+			}
+			if (button.GetCollisionButton() && controller.GetHairTrigger())
+			{
+				ChangeScene("WhiteRoomScene");
 			}
 		}
 
@@ -60,6 +66,10 @@ namespace Valve.VR.InteractionSystem
 					return false;
 				}
 			}
+		public void ChangeScene(string sceneName)
+		{
+			SceneManager.LoadScene(sceneName);
+		}
 
 	}
 }

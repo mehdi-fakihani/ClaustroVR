@@ -27,7 +27,7 @@ public class DoorManager : MonoBehaviour
 			myAudioSource.Play ();
           //  doorAnimation.SetBool("open", true);
 			timer = timer + Time.deltaTime;
-			blackScreen.SetActive (true);
+			//blackScreen.SetActive (true);
 			StartCoroutine (openDoor());
 			if (timer > 5) 
 			{
@@ -50,6 +50,7 @@ public class DoorManager : MonoBehaviour
         Quaternion target = Quaternion.Euler(0, 90, 0);
         while (transform.rotation != target)
         {
+			Debug.Log (transform.rotation);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, target, step);
             yield return new WaitForSeconds(0.01f);
         }
