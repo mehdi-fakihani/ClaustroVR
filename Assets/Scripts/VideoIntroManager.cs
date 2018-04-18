@@ -10,6 +10,7 @@ public class VideoIntroManager : MonoBehaviour {
     [SerializeField] private float pauseTime = 5;
     private VideoPlayer test;
 	private float timeTest = 0;
+	public GameObject audioSour;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,7 @@ public class VideoIntroManager : MonoBehaviour {
 			if (timeTest > pauseTime) {
 				this.gameObject.SetActive(false);
 				light.SetActive(true);
+				audioSour.SetActive (true);
 			}
         }
         else

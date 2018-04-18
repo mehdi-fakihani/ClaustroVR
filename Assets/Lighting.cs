@@ -18,7 +18,7 @@ public class Lighting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (forcelight < 1.5)
+        if (forcelight < 2)
         {
             light.intensity = forcelight;
             forcelight += Time.deltaTime;

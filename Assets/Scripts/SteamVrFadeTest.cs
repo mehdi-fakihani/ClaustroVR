@@ -9,19 +9,21 @@ public class SteamVrFadeTest : MonoBehaviour {
 	private void Start()
 	{
 		FadeToBlack();
-		Invoke("FadeFromWhite", _fadeDuration);
+		Invoke("FadeFromBlack", _fadeDuration);
 	}
-	private void FadeToBlack()
+	public void FadeToBlack()
 	{
 		//set start color
 		SteamVR_Fade.Start(Color.clear, 0f);
 		//set and start fade to
 		SteamVR_Fade.Start(Color.black, _fadeDuration);
 	}
-	private void FadeFromWhite()
+	private void FadeFromBlack()
 	{
 		//set start color
-		SteamVR_Fade.Start(Color.white, 0f);
+		SteamVR_Fade.Start(Color.black, 0f);
 		//set and start fade to
 		SteamVR_Fade.Start(Color.clear, _fadeDuration);
 	}
+}
+
