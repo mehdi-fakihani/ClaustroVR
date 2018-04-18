@@ -9,9 +9,14 @@ namespace Valve.VR.InteractionSystem
 	{
 		public InputTest input;
 		private bool playerButtonCollision = false;
+        GameObject helpUI;
 
-	
-		void Update ()
+        void Awake()
+        {
+            helpUI = transform.Find("HelpUI").gameObject;
+        }
+
+        void Update ()
 		{
 			if (playerButtonCollision && input.HairTriggerUp())
 			{
@@ -29,6 +34,7 @@ namespace Valve.VR.InteractionSystem
 			if (collision.gameObject.tag == "Player") 
 			{
 				playerButtonCollision = true;
+                helpUI.SetActive(true);
 			}
 	
 	    }
@@ -38,19 +44,13 @@ namespace Valve.VR.InteractionSystem
 			if (collision.gameObject.tag == "Player") 
 			{
 				playerButtonCollision = false;
+                helpUI.SetActive(false);
 			}
 		}  
 
         public bool IsPressed()
         {
-            if (playerButtonCollision && input.HairTriggerUp())
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return playerButtonCollision && input.HairTriggerUp();
         }
 	}
 }
