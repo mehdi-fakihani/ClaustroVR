@@ -11,24 +11,30 @@ public class DoorManager : MonoBehaviour
 	[SerializeField] private Text doorCodeTry;
 	[SerializeField] private GameObject blackScreen;
 	private float timer = 0f;
-	public AudioSource myAudioSource;
-   // private Animator doorAnimation;
+	private AudioSource audio;
+    private Animator doorAnimation;
+	private bool first = false;
 
 
 	void Start()
 	{
-       // doorAnimation = GetComponent<Animator>();
+        doorAnimation = GetComponent<Animator>();
+		audio = GetComponent<AudioSource>();
 	}
     // Update is called once per frame
     void Update()
     {
 		if ("Code : " + doorCode == doorCodeTry.text || doorCode == doorCodeTry.text) 
 		{
-			myAudioSource.Play ();
-          //  doorAnimation.SetBool("open", true);
+			if (first == false)
+			{
+				audio.Play();
+	            doorAnimation.SetBool("open", true);
+				first = true;
+			}
 			timer = timer + Time.deltaTime;
-			//blackScreen.SetActive (true);
-			StartCoroutine (openDoor());
+			blackScreen.SetActive (true);
+			//StartCoroutine (openDoor());
 			if (timer > 5) 
 			{
                 if (SceneManager.GetActiveScene().name == "TutoSceneVideo")
@@ -50,7 +56,7 @@ public class DoorManager : MonoBehaviour
         Quaternion target = Quaternion.Euler(0, 90, 0);
         while (transform.rotation != target)
         {
-			Debug.Log (transform.rotation);
+			//Debug.Log (transform.rotation);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, target, step);
             yield return new WaitForSeconds(0.01f);
         }
