@@ -7,7 +7,7 @@ namespace Valve.VR.InteractionSystem
 {
 	public class RedButton : MonoBehaviour
 	{
-		public InputTest input;
+		//public InputTest input;
 		private bool playerButtonCollision = false;
         GameObject helpUI;
 
@@ -18,10 +18,10 @@ namespace Valve.VR.InteractionSystem
 
         void Update ()
 		{
-			if (playerButtonCollision && input.HairTriggerUp())
+			/*if (playerButtonCollision && input.HairTriggerUp())
 			{
 				ChangeScene("WhiteRoomScene");
-			}
+			}*/
 		}
 
 	    public void ChangeScene(string sceneName)
@@ -33,6 +33,7 @@ namespace Valve.VR.InteractionSystem
 	    {
 			if (collision.gameObject.tag == "Player") 
 			{
+				Debug.Log ("ok");
 				playerButtonCollision = true;
                 helpUI.SetActive(true);
 			}
@@ -46,11 +47,11 @@ namespace Valve.VR.InteractionSystem
 				playerButtonCollision = false;
                 helpUI.SetActive(false);
 			}
-		}  
+		}
 
-        public bool IsPressed()
-        {
-            return playerButtonCollision && input.HairTriggerUp();
-        }
+		public bool GetCollisionButton()
+		{
+			return playerButtonCollision;
+		}
 	}
 }
