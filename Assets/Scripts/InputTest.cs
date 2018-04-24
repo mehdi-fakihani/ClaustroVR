@@ -42,7 +42,7 @@ namespace Valve.VR.InteractionSystem
 			}
 			else
 			{
-				audio.Pause();
+				audio.Pause();«z
 			}
 			if (button.GetCollisionButton() && controller.GetHairTrigger())
 			{
