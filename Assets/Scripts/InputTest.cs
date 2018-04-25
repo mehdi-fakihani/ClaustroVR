@@ -42,7 +42,7 @@ namespace Valve.VR.InteractionSystem
 			}
 			else
 			{
-				audio.Pause();«z
+				audio.Pause();
 			}
 			if (button.GetCollisionButton() && controller.GetHairTrigger())
 			{
@@ -64,7 +64,7 @@ namespace Valve.VR.InteractionSystem
 		
 			public bool HairTriggerUp()
 			{
-				if (controller.GetHairTrigger ()) 
+				if (controller.GetHairTrigger()) 
 				{
 					return true;
 				}

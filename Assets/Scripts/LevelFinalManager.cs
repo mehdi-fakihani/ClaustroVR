@@ -33,6 +33,7 @@ public class LevelFinalManager : MonoBehaviour {
         else
         {
             audio.Stop();
+            Game.win = true;
             SceneManager.LoadScene("WhiteRoomScene");
         }
     }
