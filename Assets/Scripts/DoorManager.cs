@@ -48,9 +48,9 @@ public class DoorManager : MonoBehaviour
                     MoveScene("PrisonScene");
                 }
 				else if (SceneManager.GetActiveScene().name == "PrisonScene")
-					{
-						MoveScene("CellarScene");
-					}
+				{
+					MoveScene("CellarScene");
+				}
 			}
 		}
     }

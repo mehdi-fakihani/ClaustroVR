@@ -73,7 +73,7 @@ namespace Valve.VR.InteractionSystem
 		
 			public bool HairTriggerUp()
 			{
-				if (controller.GetHairTrigger ()) 
+				if (controller.GetHairTrigger()) 
 				{
 					return true;
 				}
