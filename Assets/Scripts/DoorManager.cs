@@ -26,10 +26,16 @@ public class DoorManager : MonoBehaviour
     {
 		if ("Code : " + doorCode == doorCodeTry.text || doorCode == doorCodeTry.text) 
 		{
-			if (first == false)
+			if (first == false && doorAnimation != null)
 			{
 				audio.Play();
 	            doorAnimation.SetBool("open", true);
+				first = true;
+			}
+			else if (first == false && doorAnimation == null)
+			{
+				audio.Play();
+				StartCoroutine (openDoor());
 				first = true;
 			}
 			timer = timer + Time.deltaTime;

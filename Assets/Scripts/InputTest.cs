@@ -16,6 +16,7 @@ namespace Valve.VR.InteractionSystem
 		private Vector2 axis = Vector2.zero;
 		[SerializeField] private RedButton button;
 		[SerializeField] private AudioSource audio;
+		[SerializeField] private LadderManager ladder;
 
 		
 
@@ -29,20 +30,28 @@ namespace Valve.VR.InteractionSystem
 
 		void Update ()
 		{
+			Debug.Log (ladder);
+			Debug.Log (ladder.PlayerIsClimbing ());
 			var device = SteamVR_Controller.Input ((int)trackedObj.index);
 			if (controller.GetTouch(touchpad)) 
 			{
 				if (!audio.isPlaying) audio.Play ();
 				axis = device.GetAxis (Valve.VR.EVRButtonId.k_EButton_Axis0);
-				if (rig != null) 
+				if(ladder && ladder.PlayerIsClimbing() && rig!=null)
+				{
+					rig.position += (transform.right * axis.x + transform.forward * axis.y) * Time.deltaTime;
+					rig.position = new Vector3 (rig.position.x, rig.position.y, rig.position.z);
+				}
+				if(rig != null) 
 				{
 					rig.position += (transform.right * axis.x + transform.forward * axis.y) * Time.deltaTime;
 					rig.position = new Vector3 (rig.position.x, 1f, rig.position.z);
 				}
+
 			}
 			else
 			{
-				audio.Pause();«z
+				audio.Pause();
 			}
 			if (button.GetCollisionButton() && controller.GetHairTrigger())
 			{
@@ -74,6 +83,7 @@ namespace Valve.VR.InteractionSystem
 					return false;
 				}
 			}
+
 		public void ChangeScene(string sceneName)
 		{
 			SceneManager.LoadScene(sceneName);
