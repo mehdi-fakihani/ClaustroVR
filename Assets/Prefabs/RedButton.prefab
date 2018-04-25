@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 136240153065320674}
   - component: {fileID: 23289047064358008}
   - component: {fileID: 54388973615320856}
-  - component: {fileID: 114517170455882598}
+  - component: {fileID: 114978185679003660}
   m_Layer: 0
   m_Name: RedButton
   m_TagString: Untagged
@@ -83,7 +83,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1861310577236600
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,8 +120,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1531583970777954}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.001, y: 0.056, z: 30.036}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.55, y: 1.22, z: 14.77}
   m_LocalScale: {x: 0.3295478, y: 0.061982796, z: 0.29887003}
   m_Children:
   - {fileID: 4379294739497942}
@@ -264,18 +264,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114517170455882598
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1531583970777954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5833bb786ad618641952079d2ecfaeba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: {fileID: 0}
 --- !u!114 &114884884688919702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -346,6 +334,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114978185679003660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1531583970777954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5833bb786ad618641952079d2ecfaeba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136240153065320674
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -353,9 +352,9 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1531583970777954}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.62
+  m_Radius: 0.79
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: -0.82, z: 0}

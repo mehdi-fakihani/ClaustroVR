@@ -33,7 +33,7 @@ public class LevelFinalManager : MonoBehaviour {
         else
         {
             audio.Stop();
-            SceneManager.LoadScene("WhiteRoomScene", LoadSceneMode.Additive);
+            SceneManager.LoadScene("WhiteRoomScene");
         }
     }
 }
