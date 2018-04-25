@@ -17,6 +17,8 @@ namespace Valve.VR.InteractionSystem
 		[SerializeField] private RedButton button;
 		[SerializeField] private AudioSource audio;
 		[SerializeField] private LadderManager ladder;
+		private bool climb = false;
+		private bool upsidedown = false;
 
 		
 
@@ -30,25 +32,38 @@ namespace Valve.VR.InteractionSystem
 
 		void Update ()
 		{
-			Debug.Log (ladder);
-			Debug.Log (ladder.PlayerIsClimbing ());
 			var device = SteamVR_Controller.Input ((int)trackedObj.index);
+			if(ladder && ladder.PlayerIsClimbing() && controller.GetHairTrigger())
+			{
+				climb = true;
+				rig.position = new Vector3 (0.5f, 0f, 0.5f);
+			}
+			//controller.GetTouchUp(touchpad)
 			if (controller.GetTouch(touchpad)) 
 			{
-				if (!audio.isPlaying) audio.Play ();
 				axis = device.GetAxis (Valve.VR.EVRButtonId.k_EButton_Axis0);
-				if(ladder && ladder.PlayerIsClimbing() && rig!=null)
+				if(rig) 
 				{
-					rig.position += (transform.right * axis.x + transform.forward * axis.y) * Time.deltaTime;
-					rig.position = new Vector3 (rig.position.x, rig.position.y, rig.position.z);
+					if (!climb && !upsidedown)
+					{
+						rig.position += (transform.right * axis.x + transform.forward * axis.y) * Time.deltaTime;
+						rig.position = new Vector3 (rig.position.x, 1f, rig.position.z);
+						if (!audio.isPlaying) audio.Play ();
+					}
+					else if (climb)
+					{ 
+						rig.position += rig.up * axis.y * Time.deltaTime;
+					}
+					else if (!climb && upsidedown)
+					{
+						rig.position += (transform.right * axis.x + transform.forward * axis.y) * Time.deltaTime;
+						rig.position = new Vector3 (rig.position.x, -10.5f, rig.position.z);
+						if (!audio.isPlaying) audio.Play ();
+					}
+						
 				}
-				if(rig != null) 
-				{
-					rig.position += (transform.right * axis.x + transform.forward * axis.y) * Time.deltaTime;
-					rig.position = new Vector3 (rig.position.x, 1f, rig.position.z);
-				}
-
 			}
+
 			else
 			{
 				audio.Pause();
@@ -56,6 +71,11 @@ namespace Valve.VR.InteractionSystem
 			if (button.GetCollisionButton() && controller.GetHairTrigger())
 			{
 				ChangeScene("WhiteRoomScene");
+			}
+			if (rig.position.y < -10.5)
+			{
+				climb = false;
+				upsidedown = true;
 			}
 		}
 
